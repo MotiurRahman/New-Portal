@@ -95,16 +95,16 @@ function displayNews(data) {
                             <img src="${element.author.img}" width="20px" height="20px" class="rounded" alt="...">
                         </div>
                         <div class="align-items-center mx-2" style="">
-                            <h6 id="name">${element.author.name ? element.author.name : "Not Found"}</h6>
+                            <h6 class="m-0 p-0" id="name">${element.author.name ? element.author.name : "Not Found"}</h6>
                         </div>
                       </div>                     
-                        <div class="align-items-center d-flex flex-fill">
-                            <img  width="20px" height="20px" src="" class="rounded" alt="...">
-                            <p class="mx-2">${element.total_view}</p>
+                      <div class="align-items-center d-flex flex-row flex-fill">
+                           <p class="m-0 p-0"><i class="fa-regular fa-eye"></i><p>
+                            <p class="m-0 p-0 px-2">${element.total_view}</p>
                         </div>
 
                         <div class="align-items-center flex-fill">
-                          <button class="btn btn-success" onclick="moreDetails('${element._id}')">More detils</button>
+                          <button class="btn btn-info" onclick="moreDetails('${element._id}')"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       
                     </div>
