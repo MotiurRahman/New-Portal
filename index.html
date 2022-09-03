@@ -75,6 +75,28 @@
             <div id="newsItems" class="row"> </div>
         </section>
 
+        <section id="modalPage">
+            <!-- Modal -->
+            <div class="modal fade" id="moreDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="moreDetailsModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div style="max-height:400px;" class="overflow-auto p-3" id="moreDetailsModalBoday"
+                            class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
     <footer class="d-flex align-items-center justify-content-center" style="height: 100px;">
         Copyright 2022 News Portal

@@ -113,7 +113,7 @@ function displayNews(data) {
                         </div>
 
                         <div class="align-items-center flex-fill">
-                          <button class="btn btn-info" onclick="moreDetails('${element._id}')"><i class="fa-solid fa-arrow-right"></i></button>
+                          <button class="btn btn-info" onclick="moreDetails('${element._id}')" data-bs-toggle="modal" data-bs-target="#moreDetailsModal"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
                       
                     </div>
@@ -130,4 +130,19 @@ function displayNews(data) {
 
 
 
+}
+
+function moreDetails(news_id) {
+    //console.log(news_id);
+    fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
+        .then(res => res.json())
+        .then(data => displayModal(data.data[0]));
+}
+
+
+function displayModal(data) {
+    const moreDetailsModalLabel = document.getElementById('moreDetailsModalLabel');
+    const moreDetailsModalBoday = document.getElementById('moreDetailsModalBoday');
+    moreDetailsModalLabel.innerText = `Title: ${data.title}`;
+    moreDetailsModalBoday.innerText = data.details;
 }
