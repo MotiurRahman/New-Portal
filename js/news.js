@@ -2,7 +2,13 @@
 const fetchData = (url) => {
     fetch(url)
         .then(res => res.json())
-        .then(data => displayCategory(data.data.news_category));
+        .then(data => displayCategory(data.data.news_category))
+        .catch(error => {
+
+            document.getElementById('headerContent').innerHTML = "";
+            document.getElementById('headerContent').innerHTML = `Error: ${error}:Please try again`;
+            console.error('There was an error!', error);
+        });
 }
 
 fetchData('https://openapi.programming-hero.com/api/news/categories');
@@ -26,17 +32,22 @@ function displayCategory(data) {
 
 // Call Based on category ID
 function newsID(catId) {
-    //console.log(catId);
+    console.log(catId);
     let url = `https://openapi.programming-hero.com/api/news/category/${catId}`;
     newsInfo(url);
 
 }
 
-
+// Fetch news data
 const newsInfo = (url) => {
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data));
+        .then(data => displayNews(data.data))
+        .catch(error => {
+            document.getElementById('mainContet').innerHTML = "";
+            document.getElementById('mainContet').innerHTML = `Error: ${error}:Please try again`;
+            console.error('There was an error!', error);
+        });
 }
 
 
@@ -45,9 +56,21 @@ function loadNews() {
     newsInfo("https://openapi.programming-hero.com/api/news/category/01");
 }
 loadNews();
+
+
 // Display News
 function displayNews(data) {
     console.log(data);
+    const totalItem = document.getElementById('totalItem');
+
+    document.getElementById('categoryList').addEventListener('click', function (e) {
+        //console.log(e.target.innerText);
+        totalItem.innerText = "";
+        totalItem.innerText = `${data.length} Items found for category ${e.target.innerText}`;
+    });
+
+
+
     const newsItems = document.getElementById('newsItems');
     newsItems.innerHTML = "";
     data.forEach(element => {
@@ -94,6 +117,7 @@ function displayNews(data) {
         newsCard.innerHTML = news;
         newsItems.appendChild(newsCard);
     });
+
 
 
 }
