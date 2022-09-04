@@ -151,6 +151,13 @@ const moreDetails = (news_id) => {
 const displayModal = (data) => {
     const moreDetailsModalLabel = document.getElementById('moreDetailsModalLabel');
     const moreDetailsModalBoday = document.getElementById('moreDetailsModalBoday');
+    const published_date = document.getElementById('published_date');
+    const rating_number = document.getElementById('rating_number');
+    const badge = document.getElementById('badge');
     moreDetailsModalLabel.innerText = `Title: ${data.title}`;
     moreDetailsModalBoday.innerText = data.details;
+    published_date.innerText = "Published Date: " + data.author.published_date;
+    rating_number.innerText = "Rating: " + data.rating.number;
+    badge.innerText = "Badge: " + data.rating.badge;
+
 }
