@@ -15,7 +15,7 @@ const fetchData = (url) => {
 
 fetchData('https://openapi.programming-hero.com/api/news/categories');
 
-function displayCategory(data) {
+const displayCategory = (data) => {
     const categoryList = document.getElementById('categoryList');
     data.forEach(element => {
 
@@ -34,7 +34,7 @@ function displayCategory(data) {
 
 
 // Call Based on category ID
-function newsID(catId, catname) {
+const newsID = (catId, catname) => {
     // console.log("catId", catId);
     // console.log("catname", catname);
     spinnerItem.classList.remove('d-none');
@@ -66,7 +66,7 @@ loadNews();
 
 
 // Display News
-function displayNews(data, catname) {
+const displayNews = (data, catname) => {
     console.log(data);
 
     //short based on total view
@@ -139,7 +139,7 @@ function displayNews(data, catname) {
 
 }
 
-function moreDetails(news_id) {
+const moreDetails = (news_id) => {
     //console.log(news_id);
     fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
         .then(res => res.json())
@@ -148,7 +148,7 @@ function moreDetails(news_id) {
 
 
 //Display Modal
-function displayModal(data) {
+const displayModal = (data) => {
     const moreDetailsModalLabel = document.getElementById('moreDetailsModalLabel');
     const moreDetailsModalBoday = document.getElementById('moreDetailsModalBoday');
     moreDetailsModalLabel.innerText = `Title: ${data.title}`;

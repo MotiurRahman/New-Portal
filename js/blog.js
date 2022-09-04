@@ -1,4 +1,4 @@
-function displayBlog() {
+const displayBlog = () => {
     const newsItems = document.getElementById('newsItems');
     newsItems.innerHTML = "";
     const totalItem = document.getElementById('totalItem');
@@ -10,7 +10,9 @@ function displayBlog() {
 }
 
 
-function redisplayNews() {
+
+
+const redisplayNews = () => {
     loadNews();
     questionAnswer.classList.add('d-none')
 }
