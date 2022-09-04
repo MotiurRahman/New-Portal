@@ -103,7 +103,7 @@ const displayNews = (data, catname) => {
             <div class="d-flex flex-column" style="max-height:300px;">
                     <article class="p-2">
                         <h5 class="card-title">${element.title}</h5>
-                        <p class="card-text">${element.details.slice(0, 400)}</p>
+                        <p class="card-text">${element.details.slice(0, 350)}...</p>
                     </article>
                    <div class="d-flex align-items-center">
                       <div class="d-flex align-items-center flex-fill">
