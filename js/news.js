@@ -23,7 +23,7 @@ function displayCategory(data) {
         const li = document.createElement('li');
         li.classList.add('nav-item');
         const catName = `
-        <a class="nav-link mx-3" href="#" onclick="newsID('${element.category_id}')">${element.category_name}</a>
+        <a class="nav-link mx-3" href="#" onclick="newsID('${element.category_id}','${element.category_name}')">${element.category_name}</a>
         `
         li.innerHTML = catName;
         categoryList.appendChild(li);
@@ -34,19 +34,20 @@ function displayCategory(data) {
 
 
 // Call Based on category ID
-function newsID(catId) {
-    console.log(catId);
+function newsID(catId, catname) {
+    console.log("catId", catId);
+    console.log("catname", catname);
     spinnerItem.classList.remove('d-none');
     let url = `https://openapi.programming-hero.com/api/news/category/${catId}`;
-    newsInfo(url);
+    newsInfo(url, catname);
 
 }
 
 // Fetch news data
-const newsInfo = (url) => {
+const newsInfo = (url, catname) => {
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNews(data.data))
+        .then(data => displayNews(data.data, catname))
         .catch(error => {
             document.getElementById('mainContet').innerHTML = "";
             document.getElementById('mainContet').innerHTML = `Error: ${error}:Please try again`;
@@ -57,7 +58,7 @@ const newsInfo = (url) => {
 
 
 //Initial loading
-function loadNews() {
+const loadNews = () => {
     spinnerItem.classList.remove('d-none');
     newsInfo("https://openapi.programming-hero.com/api/news/category/01");
 }
@@ -65,23 +66,25 @@ loadNews();
 
 
 // Display News
-function displayNews(data) {
+function displayNews(data, catname) {
     console.log(data);
     const totalItem = document.getElementById('totalItem');
-    if (data.length == 0) {
-        spinnerItem.classList.add('d-none');
-    }
 
-    document.getElementById('categoryList').addEventListener('click', function (e) {
-        //console.log(e.target.innerText);
-        totalItem.innerText = "";
-        totalItem.innerText = `${data.length} Items found for category ${e.target.innerText}`;
-    });
 
+    totalItem.innerText = "";
+    totalItem.innerText = `${data.length} Items found for category ${catname?catname:"Home"}`;
 
 
     const newsItems = document.getElementById('newsItems');
     newsItems.innerHTML = "";
+    if (data.length == 0) {
+        spinnerItem.classList.add('d-none');
+        newsItems.innerText = "No News Found.";
+        newsItems.classList.add('bg-danger', 'text-center', 'text-light', 'p-4');
+
+    } else {
+        newsItems.classList.remove('bg-danger', 'text-center', 'text-light');
+    }
     data.forEach(element => {
         const newsCard = document.createElement('div');
         newsCard.classList.add("card");
