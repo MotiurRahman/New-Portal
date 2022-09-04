@@ -68,11 +68,12 @@ loadNews();
 // Display News
 function displayNews(data, catname) {
     console.log(data);
+    questionAnswer.classList.add('d-none')
     const totalItem = document.getElementById('totalItem');
 
 
     totalItem.innerText = "";
-    totalItem.innerText = `${data.length} Items found for category ${catname?catname:"Home"}`;
+    totalItem.innerText = `${data.length} Items found for category ${catname ? catname : "Home"}`;
 
 
     const newsItems = document.getElementById('newsItems');
