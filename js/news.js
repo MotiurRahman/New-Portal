@@ -35,8 +35,8 @@ function displayCategory(data) {
 
 // Call Based on category ID
 function newsID(catId, catname) {
-    console.log("catId", catId);
-    console.log("catname", catname);
+    // console.log("catId", catId);
+    // console.log("catname", catname);
     spinnerItem.classList.remove('d-none');
     let url = `https://openapi.programming-hero.com/api/news/category/${catId}`;
     newsInfo(url, catname);
@@ -68,6 +68,9 @@ loadNews();
 // Display News
 function displayNews(data, catname) {
     console.log(data);
+
+    //short based on total view
+    data.sort(function (view1, view2) { return view2.total_view - view1.total_view });
     questionAnswer.classList.add('d-none')
     const totalItem = document.getElementById('totalItem');
 
@@ -113,7 +116,7 @@ function displayNews(data, catname) {
                       </div>                     
                       <div class="align-items-center d-flex flex-row flex-fill">
                            <p class="m-0 p-0"><i class="fa-regular fa-eye"></i><p>
-                            <p class="m-0 p-0 px-2">${element.total_view}</p>
+                            <p class="m-0 p-0 px-2">${element.total_view ? element.total_view : 0}</p>
                         </div>
 
                         <div class="align-items-center flex-fill">
@@ -144,6 +147,7 @@ function moreDetails(news_id) {
 }
 
 
+//Display Modal
 function displayModal(data) {
     const moreDetailsModalLabel = document.getElementById('moreDetailsModalLabel');
     const moreDetailsModalBoday = document.getElementById('moreDetailsModalBoday');
