@@ -1,14 +1,14 @@
-# The name of this website is Food Lover
+# This is News Portal website
 
-# This website link - https://steady-fox-2b490b.netlify.app/
+# This website link - https://melodious-macaron-c7db97.netlify.app
 
 # You can check out the following features and objectives
 
-- You can select any five food and add cost per food then add shpping and cooking chage then it will calculate the total cost
+- You can read news based on various category like Breaking News, Regular News,International News,Sports,Entertainment,Culture,Arts,All News
 
 # The following technologies I have used to develop this website
 
 - HTML5
-- CSs
+- CSS3
 - Bootstrap 5
 - Javascript
